@@ -1,0 +1,36 @@
+{
+  "name": "recipes",
+  "version": "1.0.0",
+  "description": "a recipe api that uses dummy data",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestaintin/recipes.git"
+  },
+  "author": "Isioye Mohammed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codestaintin/recipes/issues"
+  },
+  "homepage": "https://github.com/codestaintin/recipes#readme",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.5.3",
+    "should": "^13.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.15.5",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.1",
+    "validatorjs": "^3.13.5"
+  }
+}
