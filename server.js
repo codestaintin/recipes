@@ -2,11 +2,10 @@ import http from 'http';
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import routes from './server/routes/index';
+import router from './controllers';
 
 // Set up express app
 const app = express();
-const router = express.Router();
 
 // Port configuration
 const hostname = 'localhost';
@@ -15,7 +14,7 @@ app.set('port', port);
 
 // Create server
 const server = http.createServer(app);
-routes(router);
+
 
 // Log requests to the console
 app.use(logger('dev'));
