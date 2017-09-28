@@ -1,4 +1,4 @@
-import chai, { expect, should } from 'chai';
+import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../server';
 
@@ -60,16 +60,6 @@ describe('Tests for all API endpoints', () => {
         });
     });
 
-    it('should return \'Show instance of an Array\'', (done) => {
-      chai.request(server)
-        .get('/api/v1/recipes')
-        .end((err, res) => {
-          res.should.be.json();
-          expect(res.body).should.be.an.instanceof(Array);
-          done();
-        });
-    });
-
     it('should return \'Recipe successfully updated\'', (done) => {
       chai.request(server)
         .put('/api/v1/recipes/1')
@@ -93,26 +83,6 @@ describe('Tests for all API endpoints', () => {
     });
 
     it('should return \'Review successfully created\'', (done) => {
-      chai.request(server)
-        .post('/api/v1/recipes/1/reviews')
-        .set('Accept', 'application/json')
-        .send({
-          id: 2,
-          recipeId: 'Very good delicacy',
-          review: 'A very sumptous mean'
-        })
-        .end((err, res) => {
-          expect(res.statusCode).to.equal(200);
-          expect(res.body).to.deep.equal({
-            error: false,
-            message: 'Review successfully created',
-            status: 200
-          });
-          done();
-        });
-    });
-
-    it('should check if output is of Array type', (done) => {
       chai.request(server)
         .post('/api/v1/recipes/1/reviews')
         .set('Accept', 'application/json')
