@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/codestaintin/recipes.svg?branch=development)](https://travis-ci.org/codestaintin/recipes)
+
 # More Recipes
 
 ## Application Features
