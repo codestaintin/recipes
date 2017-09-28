@@ -32,10 +32,12 @@ describe('Tests for all API endpoints', () => {
         .post('/api/v1/recipes')
         .set('Accept', 'application/json')
         .send({
-          name: '',
+          name: 'Afang soup',
           description: 'Very good delicacy',
           ingredient: 'Water and pepper',
-          image: 'img_01'
+          image: 'img_01',
+          upvote: 343,
+          downvote: 32
         })
         .end((err, res) => {
           expect(res.statusCode).to.equal(200);
@@ -64,19 +66,38 @@ describe('Tests for all API endpoints', () => {
           name: 'Afang soup',
           description: 'Very good delicacy',
           ingredient: 'Water and pepper',
-          image: 'img_01'
+          image: 'img_01',
+          upvote: 343,
+          downvote: 32
         })
         .end((err, res) => {
           expect(res.statusCode).to.equal(200);
-          expect(res.body).to.deep.equal({
-            error: false,
-            message: 'Recipe successfully updated',
-          });
+          expect(res.body).to.be.an.instanceof(Array);
           done();
         });
     });
 
     it('should return \'Review successfully created\'', (done) => {
+      chai.request(server)
+        .post('/api/v1/recipes/1/reviews')
+        .set('Accept', 'application/json')
+        .send({
+          id: 2,
+          recipeId: 'Very good delicacy',
+          review: 'A very sumptous mean'
+        })
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.deep.equal({
+            error: false,
+            message: 'Review successfully created',
+            status: 200
+          });
+          done();
+        });
+    });
+
+    it('should check if output is of Array type', (done) => {
       chai.request(server)
         .post('/api/v1/recipes/1/reviews')
         .set('Accept', 'application/json')
