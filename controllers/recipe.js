@@ -12,24 +12,6 @@ global.recipes = [
     image: faker.image.food(),
     upvote: faker.random.number(),
     downvote: faker.random.number()
-  },
-  {
-    id: 2,
-    name: faker.name.findName(),
-    description: faker.lorem.text(),
-    ingredient: faker.lorem.sentence(),
-    image: faker.image.food(),
-    upvote: faker.random.number(),
-    downvote: faker.random.number()
-  },
-  {
-    id: 3,
-    name: faker.name.findName(),
-    description: faker.lorem.text(),
-    ingredient: faker.lorem.sentence(),
-    image: faker.image.food(),
-    upvote: faker.random.number(),
-    downvote: faker.random.number()
   }
 ];
 
