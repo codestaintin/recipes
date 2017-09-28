@@ -60,6 +60,15 @@ describe('Tests for all API endpoints', () => {
         });
     });
 
+    it('should return \'Show instance of an Array\'', (done) => {
+      chai.request(server)
+        .get('/api/v1/recipes')
+        .end((err, res) => {
+          expect(res.body).to.be.an.instanceof(Array);
+          done();
+        });
+    });
+
     it('should return \'Recipe successfully updated\'', (done) => {
       chai.request(server)
         .put('/api/v1/recipes/1')
