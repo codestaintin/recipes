@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/codestaintin/recipes.svg?branch=development)](https://travis-ci.org/codestaintin/recipes)
-
 # More Recipes
+[![Build Status](https://travis-ci.org/codestaintin/recipes.svg?branch=development)](https://travis-ci.org/codestaintin/recipes)
 
 ## Application Features
 More recipes is an application where a anyone can see recipes and method of preparaton of his/her favorite meal. A registered and signed in user can do any of the follwing
