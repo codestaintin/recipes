@@ -6,22 +6,23 @@ chai.use(chaiHttp);
 
 describe('Tests for all API endpoints', () => {
   describe('/POST Recipe creation test', () => {
-    it('should return \'Recipe successfully created\'', (done) => {
+    it('should return \'Recipe parameter(s) missing\'', (done) => {
       chai.request(server)
         .post('/api/v1/recipes')
         .set('Accept', 'application/json')
         .send({
-          name: 'Afang soup',
+          name: '',
           description: 'Very good delicacy',
           ingredient: 'Water and pepper',
-          image: 'img_01'
+          image: 'img_01',
+          upvote: 343,
+          downvote: 32
         })
         .end((err, res) => {
           expect(res.statusCode).to.equal(200);
           expect(res.body).to.deep.equal({
-            error: false,
-            message: 'Recipe successfully created',
-            status: 200
+            error: true,
+            message: 'Recipe parameter(s) missing'
           });
           done();
         });
@@ -42,8 +43,9 @@ describe('Tests for all API endpoints', () => {
         .end((err, res) => {
           expect(res.statusCode).to.equal(200);
           expect(res.body).to.deep.equal({
-            error: true,
-            message: 'Recipe parameter(s) missing'
+            error: false,
+            message: 'Recipe successfully created',
+            status: 200
           });
           done();
         });
