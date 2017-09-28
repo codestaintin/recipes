@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai';
+import chai, { expect, should } from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../server';
 
@@ -64,7 +64,8 @@ describe('Tests for all API endpoints', () => {
       chai.request(server)
         .get('/api/v1/recipes')
         .end((err, res) => {
-          expect(res.body).to.be.an.instanceof(Array);
+          res.should.be.json();
+          expect(res.body).should.be.an.instanceof(Array);
           done();
         });
     });
