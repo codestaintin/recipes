@@ -1,6 +1,8 @@
 # More Recipes
 [![Build Status](https://travis-ci.org/codestaintin/recipes.svg?branch=development)](https://travis-ci.org/codestaintin/recipes)
 
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
+
 ## Application Features
 More recipes is an application where a anyone can see recipes and method of preparaton of his/her favorite meal. A registered and signed in user can do any of the follwing
 - Add a new recipe
