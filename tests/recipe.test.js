@@ -74,7 +74,10 @@ describe('Tests for all API endpoints', () => {
         })
         .end((err, res) => {
           expect(res.statusCode).to.equal(200);
-          expect(res.body).to.deep.equal({});
+          expect(res.body).to.deep.equal({
+            error: false,
+            message: 'Recipe successfully updated'
+          });
           done();
         });
     });
