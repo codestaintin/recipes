@@ -1,38 +1,45 @@
 import express from 'express';
+import faker from 'faker';
 
 const router = express.Router();
 
 global.recipes = [
   {
     id: 1,
-    name: 'Okro soup',
-    description: 'This is how to make okro soup',
-    ingredient: 'Okro and water',
-    image: 'someimage',
-    upvote: 23,
-    downvote: 3
+    name: faker.name.findName(),
+    description: faker.lorem.text(),
+    ingredient: faker.lorem.sentence(),
+    image: faker.image.food(),
+    upvote: faker.random.number(),
+    downvote: faker.random.number()
   },
   {
     id: 2,
-    name: 'Afang soup',
-    description: 'This is how to make afang soup',
-    ingredient: 'afang and water',
-    image: 'afangimage',
-    upvote: 9,
-    downvote: 3
+    name: faker.name.findName(),
+    description: faker.lorem.text(),
+    ingredient: faker.lorem.sentence(),
+    image: faker.image.food(),
+    upvote: faker.random.number(),
+    downvote: faker.random.number()
   },
   {
     id: 3,
-    name: 'Pepper soup',
-    description: 'This is how to make pepper soup',
-    ingredient: 'pepper, seasoning and water',
-    image: 'pepper_img',
-    upvote: 19,
-    downvote: 0
+    name: faker.name.findName(),
+    description: faker.lorem.text(),
+    ingredient: faker.lorem.sentence(),
+    image: faker.image.food(),
+    upvote: faker.random.number(),
+    downvote: faker.random.number()
   }
 ];
 
-global.reviews = [{ id: 1, recipeId: 3, review: 'A very tasty meal it is' }];
+global.reviews = [
+  {
+    id: 1,
+    recipeId: 3,
+    review: faker.lorem.sentence()
+  }
+];
 
 router.get('/', (req, res) => {
   return res.json({
@@ -78,6 +85,8 @@ router.put('/:recipeId', (req, res) => {
       global.recipes[i].description = req.body.description;
       global.recipes[i].ingredient = req.body.ingredient;
       global.recipes[i].image = req.body.image;
+      global.recipes[i].upvote = req.body.upvote;
+      global.recipes[i].downvote = req.body.downvote;
       return res.json({
         message: 'Recipe successfully updated',
         error: false
