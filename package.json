@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "nyc --reporter=html mocha tests/*.test.js --compilers js:babel-register && nyc report",
-    "start": "nodemon server --exec babel-node",
+    "start-dev": "nodemon server --exec babel-node",
+    "start": "node index",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
