@@ -1,5 +1,5 @@
 # More Recipes
-[![Build Status](https://travis-ci.org/codestaintin/recipes.svg?branch=development)](https://travis-ci.org/codestaintin/recipes) [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate) [![Coverage Status](https://coveralls.io/repos/github/codestaintin/recipes/badge.svg?branch=master)](https://coveralls.io/github/codestaintin/recipes?branch=master)
+[![Build Status](https://travis-ci.org/codestaintin/recipes.svg?branch=development)](https://travis-ci.org/codestaintin/recipes) [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate) [![Coverage Status](https://coveralls.io/repos/github/codestaintin/recipes/badge.svg?branch=development)](https://coveralls.io/github/codestaintin/recipes?branch=development)
 
 ## Application Features
 More recipes is an application where a anyone can see recipes and method of preparaton of his/her favorite meal. A registered and signed in user can do any of the follwing
