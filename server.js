@@ -12,10 +12,6 @@ const hostname = 'localhost';
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
 
-// Create server
-const server = http.createServer(app);
-
-
 // Log requests to the console
 app.use(logger('dev'));
 
@@ -31,8 +27,11 @@ app.get('*', (req, res) => res.status(404).send({
   message: 'That route does not exist'
 }));
 
+// Create server
+const server = http.createServer(app);
+
 server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running on port ${port}`);
 });
 
 export default app;

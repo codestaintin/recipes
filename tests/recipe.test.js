@@ -28,6 +28,72 @@ describe('Tests for all API endpoints', () => {
         });
     });
 
+    it('should return \'Recipe parameter(s) missing\'', (done) => {
+      chai.request(server)
+        .post('/api/v1/recipes')
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Anambra soup',
+          description: '',
+          ingredient: 'Water and pepper',
+          image: 'img_01',
+          upvote: 343,
+          downvote: 32
+        })
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.deep.equal({
+            error: true,
+            message: 'Recipe parameter(s) missing'
+          });
+          done();
+        });
+    });
+
+    it('should return \'Recipe parameter(s) missing\'', (done) => {
+      chai.request(server)
+        .post('/api/v1/recipes')
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Afang soup',
+          description: 'Very good delicacy',
+          ingredient: '',
+          image: 'img_01',
+          upvote: 343,
+          downvote: 32
+        })
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.deep.equal({
+            error: true,
+            message: 'Recipe parameter(s) missing'
+          });
+          done();
+        });
+    });
+
+    it('should return \'Recipe parameter(s) missing\'', (done) => {
+      chai.request(server)
+        .post('/api/v1/recipes')
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Cooking soup',
+          description: 'Very good delicacy',
+          ingredient: 'Water and pepper',
+          image: '',
+          upvote: 343,
+          downvote: 32
+        })
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.deep.equal({
+            error: true,
+            message: 'Recipe parameter(s) missing'
+          });
+          done();
+        });
+    });
+
     it('should return \'Recipe successfully created\'', (done) => {
       chai.request(server)
         .post('/api/v1/recipes')

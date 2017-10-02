@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  if (!req.body.name) {
+  if (!req.body.name || !req.body.description || !req.body.ingredient || !req.body.image) {
     return res.json({
       message: 'Recipe parameter(s) missing',
       error: true
@@ -61,52 +61,51 @@ router.post('/:recipeId/reviews', (req, res) => {
 });
 
 router.put('/:recipeId', (req, res) => {
-  for (let i = 0; i < global.recipes.length; i += 1) {
-    if (global.recipes[i].id === parseInt(req.params.recipeId, 10)) {
-      global.recipes[i].name = req.body.name;
-      global.recipes[i].description = req.body.description;
-      global.recipes[i].ingredient = req.body.ingredient;
-      global.recipes[i].image = req.body.image;
-      global.recipes[i].upvote = req.body.upvote;
-      global.recipes[i].downvote = req.body.downvote;
+  global.recipes.forEach((element) => {
+    if (element.id === parseInt(req.params.recipeId, 10)) {
+      element.name = req.body.name;
+      element.description = req.body.description;
+      element.ingredient = req.body.ingredient;
+      element.image = req.body.image;
+      element.upvote = req.body.upvote;
+      element.downvote = req.body.downvote;
       return res.json({
         message: 'Recipe successfully updated',
         error: false
       });
     }
-  }
-  return res.status(404).json({
+  });
+  res.status(404).json({
     message: 'No recipe found',
     error: true
   });
 });
 
 router.delete('/:recipeId', (req, res) => {
-  for (let i = 0; i < global.recipes.length; i += 1) {
-    if (global.recipes[i].id === parseInt(req.params.recipeId, 10)) {
-      global.recipes.splice(i, 1);
-      return res.json({
-        message: 'Recipe Deletion succesful',
-        error: false
-      });
+  const newRecipes = global.recipes.filter((recipes) => {
+    if (recipes.id !== parseInt(req.params.recipeId, 10)) {
+      return recipes;
     }
-  }
-  return res.status(404).json({
-    message: 'No recipe found',
-    error: true
+  });
+  console.log('Line87', global.recipes);
+  const isFound = newRecipes.length !== global.recipes.length;
+  global.recipes = isFound ? newRecipes : global.recipes;
+  return res.status(isFound ? 200 : 404).json({
+    message: isFound ? 'Recipe Deletion Succesful' : 'No recipe found',
+    error: !isFound
   });
 });
 
 router.get('/:recipeId', (req, res) => {
-  for (let i = 0; i < global.recipes.length; i += 1) {
-    if (global.recipes[i].id === parseInt(req.params.recipeId, 10)) {
+  global.recipes.forEach((element) => {
+    if (element.id === parseInt(req.params.recipeId, 10)) {
       return res.json({
-        recipe: global.recipes[i],
+        recipe: element,
         message: 'Recipe found',
         error: false
       });
     }
-  }
+  });
   return res.status(404).json({
     message: 'No recipe found',
     error: true
